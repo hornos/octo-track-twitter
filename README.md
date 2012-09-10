@@ -1,3 +1,9 @@
+usage
+=====
+* install tweepy into ../lib
+* get credentials
+* octo-track \#hashtag
+
 octo-track-twitter
 ==================
 
