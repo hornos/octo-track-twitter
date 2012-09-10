@@ -1,0 +1,28 @@
+#!/bin/bash
+source ${HOME}/shf3/lib/header
+import sys/py
+import sys
+
+if test $# -lt 1 ; then
+  sys/py/run -h
+  exit $?
+fi
+
+key="${grd}/key/oauth/${gbn}"
+if ! readable "${key}" ; then
+  msg "Not found: ${key}"
+  exit 1
+fi
+source "${key}"
+
+# install tweepy into ../lib
+sys/py/lib
+
+_os=$(sys/os)
+if test "${_os}" = "osx" ; then
+  export LC_ALL='en_US'
+fi
+sys/py/run --consumer-key "$CONSUMER_KEY"       \
+           --consumer-secret "$CONSUMER_SECRET" \
+           --access-token "$ACCESS_TOKEN"       \
+           --access-key "$ACCESS_KEY" $*
